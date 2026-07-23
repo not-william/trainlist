@@ -1,0 +1,102 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f4f4f2;
+  color: #1a1a1a;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header { text-align: center; margin-bottom: 1.5rem; }
+header h1 { font-size: 2.2rem; }
+.tagline { color: #555; }
+.updated { color: #999; font-size: 0.8rem; margin-top: 0.3rem; }
+
+.windows { display: flex; gap: 0.8rem; justify-content: center; margin-bottom: 1rem; }
+.window-box {
+  display: block;
+  padding: 1rem 2rem;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #1a1a1a;
+  transition: transform 0.1s, border-color 0.1s;
+}
+.window-box:hover { transform: translateY(-2px); }
+.window-box.active { border-color: #e4002b; background: #fff5f6; }
+
+.sorts {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+.sort-link {
+  margin-left: 0.6rem;
+  text-decoration: none;
+  color: #555;
+  padding: 0.25rem 0.6rem;
+  border-radius: 8px;
+}
+.sort-link.active { background: #1a1a1a; color: #fff; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); }
+
+.photo-wrap { position: relative; aspect-ratio: 16 / 9; background: #ddd; }
+.photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rank {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.card-body { padding: 0.9rem 1rem 1.1rem; }
+.card-body h2 { font-size: 1.05rem; }
+.operator { color: #e4002b; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.2rem; }
+.blurb { color: #888; font-size: 0.8rem; margin-bottom: 0.4rem; }
+
+.score { margin-top: 0.55rem; font-size: 0.9rem; }
+.score .label { margin-right: 0.3rem; }
+.score strong { font-size: 1.05rem; }
+.nodata { color: #999; font-style: italic; }
+
+.bar {
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  margin-top: 0.25rem;
+  overflow: hidden;
+}
+.fill { height: 100%; background: #2fb344; border-radius: 3px; }
+
+footer {
+  margin-top: 2.5rem;
+  color: #999;
+  font-size: 0.8rem;
+  text-align: center;
+}
+footer details { margin-top: 0.6rem; }
+footer ul { list-style: none; margin-top: 0.4rem; }
