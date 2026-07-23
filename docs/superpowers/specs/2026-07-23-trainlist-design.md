@@ -47,7 +47,9 @@ A standalone Python daemon that:
 2. Parses each XML message defensively; malformed messages are logged and
    skipped, never crash the daemon.
 3. Matches each train against tracked listings by **TOC code + origin→destination
-   CRS pair**. Non-matching trains are dropped immediately.
+   location pair**. Darwin identifies locations by TIPLOC code (e.g. `KNGX`,
+   `EDINBUR`), so all location fields store TIPLOCs rather than CRS codes.
+   Non-matching trains are dropped immediately.
 4. On an actual arrival at the train's final destination, upserts one row into
    `arrivals` (unique on Darwin RID, so re-delivered messages don't
    double-count). Cancellation messages set the `cancelled` flag.
@@ -62,10 +64,10 @@ addition).
 - **`listings`** — id, route name, operator name, TOC code, photo filename,
   photo attribution, comfort score (0–10), price score (0–10, 10 = cheap),
   blurb.
-- **`listing_routes`** — listing id, origin CRS, destination CRS. Pairs are
-  directional; the seed lists both directions explicitly (KGX→EDB and
-  EDB→KGX), and a listing may have several qualifying endpoint pairs. The
-  matched pair's destination CRS is where arrival is measured.
+- **`listing_routes`** — listing id, origin TIPLOC, destination TIPLOC. Pairs
+  are directional; the seed lists both directions explicitly (KNGX→EDINBUR and
+  EDINBUR→KNGX), and a listing may have several qualifying endpoint pairs. The
+  matched pair's destination is where arrival is measured.
 - **`arrivals`** — Darwin RID (unique), listing id, service date
   (Europe/London), scheduled arrival, actual arrival, delay minutes, cancelled
   flag.
