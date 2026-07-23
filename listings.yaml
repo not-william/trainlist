@@ -1,0 +1,27 @@
+# Curated seed data. Comfort/price are hand-scored 0-10 (price: 10 = cheap).
+# Routes are directional TIPLOC pairs; list both directions.
+listings:
+  - slug: ecml-lner
+    route_name: East Coast Main Line
+    operator_name: LNER
+    toc: GR
+    photo: ecml-lner.jpg
+    photo_attribution: "TODO-replace-in-task-10"
+    comfort: 8
+    price: 4
+    blurb: "Azuma (Class 800/801) London–Edinburgh"
+    routes:
+      - [KNGX, EDINBUR]
+      - [EDINBUR, KNGX]
+  - slug: ecml-lumo
+    route_name: East Coast Main Line
+    operator_name: Lumo
+    toc: LD
+    photo: ecml-lumo.jpg
+    photo_attribution: "TODO-replace-in-task-10"
+    comfort: 6
+    price: 9
+    blurb: "Class 803, single-class London–Edinburgh"
+    routes:
+      - [KNGX, EDINBUR]
+      - [EDINBUR, KNGX]
