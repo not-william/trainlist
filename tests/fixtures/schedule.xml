@@ -1,0 +1,9 @@
+<Pport xmlns="http://www.thalesgroup.com/rtti/PushPort/v16" ts="2026-07-23T05:00:00.0000000+01:00" version="16.0">
+  <uR updateOrigin="Darwin">
+    <schedule xmlns:ns2="http://www.thalesgroup.com/rtti/PushPort/Schedules/v2" rid="202607238012345" uid="P12345" trainId="1S05" ssd="2026-07-23" toc="GR">
+      <ns2:OR tpl="KNGX" act="TB" ptd="09:00" wtd="09:00"/>
+      <ns2:IP tpl="YORK" act="T" pta="10:52" ptd="10:55" wta="10:52" wtd="10:55"/>
+      <ns2:DT tpl="EDINBUR" act="TF" pta="13:20" wta="13:20"/>
+    </schedule>
+  </uR>
+</Pport>
