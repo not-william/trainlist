@@ -1,27 +1,190 @@
 # Curated seed data. Comfort/price are hand-scored 0-10 (price: 10 = cheap).
 # Routes are directional TIPLOC pairs; list both directions.
+# photo_attribution is filled in Step 3 when photos are downloaded.
 listings:
   - slug: ecml-lner
     route_name: East Coast Main Line
     operator_name: LNER
     toc: GR
     photo: ecml-lner.jpg
-    photo_attribution: "TODO-replace-in-task-10"
+    photo_attribution: "Photo: EmmanuelK314159, Wikimedia Commons, CC BY-SA 4.0"
     comfort: 8
     price: 4
-    blurb: "Azuma (Class 800/801) London–Edinburgh"
+    blurb: "Azuma (Class 800/801), London–Leeds/Newcastle/Edinburgh"
     routes:
       - [KNGX, EDINBUR]
       - [EDINBUR, KNGX]
+      - [KNGX, NWCSTLE]
+      - [NWCSTLE, KNGX]
+      - [KNGX, LEEDS]
+      - [LEEDS, KNGX]
   - slug: ecml-lumo
     route_name: East Coast Main Line
     operator_name: Lumo
     toc: LD
     photo: ecml-lumo.jpg
-    photo_attribution: "TODO-replace-in-task-10"
+    photo_attribution: "Photo: Drallasta, Wikimedia Commons, CC BY-SA 4.0"
     comfort: 6
     price: 9
     blurb: "Class 803, single-class London–Edinburgh"
     routes:
       - [KNGX, EDINBUR]
       - [EDINBUR, KNGX]
+  - slug: ecml-hull-trains
+    route_name: East Coast Main Line
+    operator_name: Hull Trains
+    toc: HT
+    photo: ecml-hull-trains.jpg
+    photo_attribution: "Photo: Vanmanyo, Wikimedia Commons, CC BY 4.0"
+    comfort: 7
+    price: 7
+    blurb: "Paragon (Class 802), London–Hull"
+    routes:
+      - [KNGX, HULL]
+      - [HULL, KNGX]
+  - slug: ecml-grand-central
+    route_name: East Coast Main Line
+    operator_name: Grand Central
+    toc: GC
+    photo: ecml-grand-central.jpg
+    photo_attribution: "Photo: Phil Sangwell, Wikimedia Commons, CC BY 2.0"
+    comfort: 6
+    price: 8
+    blurb: "Class 180 Adelante, London–Sunderland"
+    routes:
+      - [KNGX, SNDRLND]
+      - [SNDRLND, KNGX]
+  - slug: wcml-avanti
+    route_name: West Coast Main Line
+    operator_name: Avanti West Coast
+    toc: VT
+    photo: wcml-avanti.jpg
+    photo_attribution: "Photo: Tom, Wikimedia Commons, CC BY-SA 2.0"
+    comfort: 7
+    price: 3
+    blurb: "Pendolino (Class 390), London–Manchester/Liverpool/Glasgow"
+    routes:
+      - [EUSTON, MNCRPIC]
+      - [MNCRPIC, EUSTON]
+      - [EUSTON, LVRPLSH]
+      - [LVRPLSH, EUSTON]
+      - [EUSTON, GLGC]
+      - [GLGC, EUSTON]
+  - slug: gwml-gwr
+    route_name: Great Western Main Line
+    operator_name: GWR
+    toc: GW
+    photo: gwml-gwr.jpg
+    photo_attribution: "Photo: Sümeyra Balıkçı, Wikimedia Commons, CC BY-SA 4.0"
+    comfort: 7
+    price: 4
+    blurb: "IET (Class 800/802), London–Bristol/Cardiff/Plymouth"
+    routes:
+      - [PADTON, BRSTLTM]
+      - [BRSTLTM, PADTON]
+      - [PADTON, CRDFCEN]
+      - [CRDFCEN, PADTON]
+      - [PADTON, PLYMTH]
+      - [PLYMTH, PADTON]
+  - slug: mml-emr
+    route_name: Midland Main Line
+    operator_name: East Midlands Railway
+    toc: EM
+    photo: mml-emr.jpg
+    photo_attribution: "Photo: mattbuck (category), Wikimedia Commons, CC BY-SA 3.0"
+    comfort: 7
+    price: 5
+    blurb: "Class 222 Meridian, London–Sheffield/Nottingham"
+    routes:
+      - [STPX, SHEFFLD]
+      - [SHEFFLD, STPX]
+      - [STPX, NTNG]
+      - [NTNG, STPX]
+  - slug: bml-southern
+    route_name: Brighton Main Line
+    operator_name: Southern
+    toc: SN
+    photo: bml-southern.jpg
+    photo_attribution: "Photo: Shaquille Gurung, Wikimedia Commons, CC BY-SA 4.0"
+    comfort: 5
+    price: 6
+    blurb: "Class 377 Electrostar, London Victoria–Brighton"
+    routes:
+      - [VICTRIA, BRGHTN]
+      - [BRGHTN, VICTRIA]
+  - slug: bml-gatwick-express
+    route_name: Brighton Main Line
+    operator_name: Gatwick Express
+    toc: GX
+    photo: bml-gatwick-express.jpg
+    photo_attribution: "Photo: davwheat, Wikimedia Commons, CC BY-SA 2.0"
+    comfort: 6
+    price: 4
+    blurb: "Class 387, non-stop London Victoria–Gatwick Airport"
+    routes:
+      - [VICTRIA, GTWK]
+      - [GTWK, VICTRIA]
+  - slug: chiltern
+    route_name: Chiltern Main Line
+    operator_name: Chiltern Railways
+    toc: CH
+    photo: chiltern.jpg
+    photo_attribution: "Photo: John Lucas, Wikimedia Commons, CC BY-SA 2.0"
+    comfort: 7
+    price: 7
+    blurb: "Class 168, London Marylebone–Birmingham Moor Street"
+    routes:
+      - [MARYLBN, BHAMMRS]
+      - [BHAMMRS, MARYLBN]
+  - slug: geml-greater-anglia
+    route_name: Great Eastern Main Line
+    operator_name: Greater Anglia
+    toc: LE
+    photo: geml-greater-anglia.jpg
+    photo_attribution: "Photo: Hugh Llewelyn, Wikimedia Commons, CC BY-SA 2.0"
+    comfort: 8
+    price: 5
+    blurb: "Stadler FLIRT (Class 745), London Liverpool Street–Norwich"
+    routes:
+      - [LIVST, NRCH]
+      - [NRCH, LIVST]
+  - slug: xc-voyager
+    route_name: Cross Country Route
+    operator_name: CrossCountry
+    toc: XC
+    photo: xc-voyager.jpg
+    photo_attribution: "Photo: Britishrailclass91, Wikimedia Commons, CC BY-SA 4.0"
+    comfort: 4
+    price: 4
+    blurb: "Voyager (Class 220/221), Birmingham–Bristol/Manchester"
+    routes:
+      - [BHAMNWS, BRSTLTM]
+      - [BRSTLTM, BHAMNWS]
+      - [BHAMNWS, MNCRPIC]
+      - [MNCRPIC, BHAMNWS]
+  - slug: tpe-nova
+    route_name: North TransPennine
+    operator_name: TransPennine Express
+    toc: TP
+    photo: tpe-nova.jpg
+    photo_attribution: "Photo: S5A-0043, Wikimedia Commons, CC BY 4.0"
+    comfort: 6
+    price: 6
+    blurb: "Nova fleet, Manchester–York/Newcastle"
+    routes:
+      - [MNCRPIC, YORK]
+      - [YORK, MNCRPIC]
+      - [MNCRPIC, NWCSTLE]
+      - [NWCSTLE, MNCRPIC]
+  - slug: se-highspeed
+    route_name: High Speed 1
+    operator_name: Southeastern Highspeed
+    toc: SE
+    photo: se-highspeed.jpg
+    photo_attribution: "Photo: mattbuck (category), Wikimedia Commons, CC BY-SA 3.0"
+    comfort: 7
+    price: 5
+    blurb: "Javelin (Class 395), London St Pancras–Ashford"
+    routes:
+      - [STPANCI, ASHFKY]
+      - [ASHFKY, STPANCI]
