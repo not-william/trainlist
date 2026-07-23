@@ -26,3 +26,21 @@ def test_handle_raw_malformed_does_not_raise(seeded):
     daemon.handle_raw(seeded, index, read("malformed.xml"))  # must not raise
     daemon.handle_raw(seeded, index, b"")  # must not raise
     assert seeded.execute("SELECT COUNT(*) c FROM arrivals").fetchone()["c"] == 0
+
+
+def test_subscription_config_topic_is_durable():
+    # Topics support durable subscription: client-id + subscriptionName.
+    connect_headers, sub_headers = daemon.subscription_config(
+        "/topic/darwin.pushport-v16", user="u@example.com"
+    )
+    assert connect_headers == {"client-id": "u@example.com"}
+    assert sub_headers == {"activemq.subscriptionName": "trainlist"}
+
+
+def test_subscription_config_queue_is_plain():
+    # Queues cannot be durably subscribed; must omit durable headers.
+    connect_headers, sub_headers = daemon.subscription_config(
+        "/queue/D0BExampleQueue", user="u@example.com"
+    )
+    assert connect_headers == {}
+    assert sub_headers == {}

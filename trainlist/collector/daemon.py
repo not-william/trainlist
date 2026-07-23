@@ -44,6 +44,20 @@ class DarwinListener(stomp.ConnectionListener):
         log.error("broker error: %s", frame.body)
 
 
+def subscription_config(destination: str, user: str) -> tuple[dict, dict]:
+    """Build (connect_headers, subscribe_headers) for a STOMP destination.
+
+    ActiveMQ only permits *durable* subscriptions (client-id +
+    activemq.subscriptionName) on topics. National Rail's Darwin Push Port
+    delivers to a per-user queue instead, which persists messages on its own
+    and rejects durable-subscription headers — so for a queue we subscribe
+    plainly, and only use durable headers for the shared topic.
+    """
+    if destination.startswith("/topic/"):
+        return {"client-id": user}, {"activemq.subscriptionName": "trainlist"}
+    return {}, {}
+
+
 def run(conn, index) -> None:
     """Connect, subscribe, block until disconnected, then raise."""
     host = os.environ["DARWIN_HOST"]
@@ -52,17 +66,11 @@ def run(conn, index) -> None:
     password = os.environ["DARWIN_PASS"]
     topic = os.environ.get("DARWIN_TOPIC", "/topic/darwin.pushport-v16")
 
+    connect_headers, sub_headers = subscription_config(topic, user)
     c = stomp.Connection12([(host, port)], heartbeats=(15000, 15000), auto_decode=False)
     c.set_listener("darwin", DarwinListener(conn, index))
-    # client-id + subscriptionName make the subscription durable, so the broker
-    # queues messages across short disconnects.
-    c.connect(user, password, wait=True, headers={"client-id": user})
-    c.subscribe(
-        topic,
-        id="trainlist",
-        ack="auto",
-        headers={"activemq.subscriptionName": "trainlist"},
-    )
+    c.connect(user, password, wait=True, headers=connect_headers)
+    c.subscribe(topic, id="trainlist", ack="auto", headers=sub_headers)
     log.info("connected to %s:%s, subscribed to %s", host, port, topic)
     while c.is_connected():
         time.sleep(5)
