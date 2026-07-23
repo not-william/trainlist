@@ -1,0 +1,14 @@
+[Unit]
+Description=Trainlist Darwin collector
+After=network.target
+
+[Service]
+User=trainlist
+WorkingDirectory=/opt/trainlist
+EnvironmentFile=/opt/trainlist/.env
+ExecStart=/opt/trainlist/venv/bin/python -m trainlist.collector.daemon
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
