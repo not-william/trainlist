@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trainlist — UK train routes ranked</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>🚆 Trainlist</h1>
+    <p class="tagline">UK train routes ranked by punctuality</p>
+    {% if last_updated %}<p class="updated">last updated {{ last_updated }}</p>{% endif %}
+  </header>
+
+  <nav class="windows">
+    {% for w, label in [("today", "Today"), ("week", "Last Week"), ("month", "Last Month")] %}
+      <a class="window-box{{ ' active' if w == window }}"
+         href="{{ url_for('index', window=w, sort=sort) }}">{{ label }}</a>
+    {% endfor %}
+  </nav>
+
+  <nav class="sorts">
+    <span>sort by</span>
+    {% for s, label in [("punctuality", "🕐 Punctuality"), ("comfort", "💺 Comfort"), ("price", "💷 Price")] %}
+      <a class="sort-link{{ ' active' if s == sort }}"
+         href="{{ url_for('index', window=window, sort=s) }}">{{ label }}</a>
+    {% endfor %}
+  </nav>
+
+  <main class="grid">
+    {% for card in cards %}
+    <article class="card">
+      <div class="photo-wrap">
+        <img src="{{ url_for('static', filename='stock/' + card.photo) }}"
+             alt="{{ card.operator_name }} rolling stock" loading="lazy">
+        <span class="rank">#{{ loop.index }}</span>
+      </div>
+      <div class="card-body">
+        <h2>{{ card.route_name }}</h2>
+        <p class="operator">{{ card.operator_name }}</p>
+        {% if card.blurb %}<p class="blurb">{{ card.blurb }}</p>{% endif %}
+        <div class="score">
+          <span class="label">🕐</span>
+          {% if card.punctuality is not none %}
+            <span class="value"><strong>{{ card.punctuality }}%</strong> on time</span>
+            <div class="bar"><div class="fill" style="width: {{ card.punctuality }}%"></div></div>
+          {% else %}
+            <span class="nodata">not enough data yet</span>
+          {% endif %}
+        </div>
+        <div class="score">
+          <span class="label">💺</span>
+          <span class="value"><strong>{{ card.comfort }}</strong>/10 comfort</span>
+          <div class="bar"><div class="fill" style="width: {{ card.comfort * 10 }}%"></div></div>
+        </div>
+        <div class="score">
+          <span class="label">💷</span>
+          <span class="value"><strong>{{ card.price }}</strong>/10 price</span>
+          <div class="bar"><div class="fill" style="width: {{ card.price * 10 }}%"></div></div>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </main>
+
+  <footer>
+    <p>Punctuality = arrival at final destination within {{ on_time_minutes }} minutes
+       of schedule; cancellations count as not on time.
+       Data from the Darwin Push Port feed © National Rail Enquiries.</p>
+    <details>
+      <summary>Photo credits</summary>
+      <ul>
+        {% for card in cards %}
+        <li>{{ card.route_name }} / {{ card.operator_name }}: {{ card.photo_attribution }}</li>
+        {% endfor %}
+      </ul>
+    </details>
+  </footer>
+</body>
+</html>

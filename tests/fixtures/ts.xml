@@ -1,0 +1,13 @@
+<Pport xmlns="http://www.thalesgroup.com/rtti/PushPort/v16" ts="2026-07-23T13:22:10.0000000+01:00" version="16.0">
+  <uR updateOrigin="TD">
+    <TS xmlns:ns3="http://www.thalesgroup.com/rtti/PushPort/Forecasts/v3" rid="202607238012345" uid="P12345" ssd="2026-07-23">
+      <ns3:Location tpl="YORK" wta="10:52" wtd="10:55">
+        <ns3:arr et="10:53" src="Darwin"/>
+      </ns3:Location>
+      <ns3:Location tpl="EDINBUR" pta="13:20" wta="13:20">
+        <ns3:arr at="13:22" src="TD"/>
+        <ns3:plat>2</ns3:plat>
+      </ns3:Location>
+    </TS>
+  </uR>
+</Pport>
