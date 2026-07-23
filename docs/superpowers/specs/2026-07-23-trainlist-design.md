@@ -62,8 +62,10 @@ addition).
 - **`listings`** — id, route name, operator name, TOC code, photo filename,
   photo attribution, comfort score (0–10), price score (0–10, 10 = cheap),
   blurb.
-- **`listing_routes`** — listing id, origin CRS, destination CRS. A listing may
-  have several qualifying endpoint pairs.
+- **`listing_routes`** — listing id, origin CRS, destination CRS. Pairs are
+  directional; the seed lists both directions explicitly (KGX→EDB and
+  EDB→KGX), and a listing may have several qualifying endpoint pairs. The
+  matched pair's destination CRS is where arrival is measured.
 - **`arrivals`** — Darwin RID (unique), listing id, service date
   (Europe/London), scheduled arrival, actual arrival, delay minutes, cancelled
   flag.
